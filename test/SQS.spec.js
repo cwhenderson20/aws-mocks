@@ -53,6 +53,5 @@ describe("SQS", function () {
 });
 
 function md5(body) {
-	const stringifiedBody = JSON.stringify(body);
-	return crypto.createHash("md5").update(stringifiedBody).digest("hex");
+	return crypto.createHash("md5").update(body).digest("hex");
 }
