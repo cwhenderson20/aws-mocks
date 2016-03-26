@@ -7,10 +7,10 @@
     "clean": "rimraf dist",
     "lint": "eslint 'lib/**/*.js' --ignore-path .gitignore",
     "pretest": "npm run lint -s",
-    "test": "mocha --compilers js:babel-core/register",
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register",
     "watch:test": "npm run test -s -- --watch -R min",
     "precoverage": "npm run lint -s",
-    "coverage": "babel-node node_modules/isparta/bin/isparta cover _mocha",
+    "coverage": "cross-env NODE_ENV=test babel-node node_modules/isparta/bin/isparta cover _mocha",
     "prebuild": "npm run clean -s && npm run test -s",
     "build": "babel lib --out-dir dist -s inline",
     "prepublish": "npm run build -s"
@@ -25,10 +25,13 @@
     "babel-preset-stage-2": "~6.5.0",
     "chai": "~3.5.0",
     "chai-as-promised": "~5.3.0",
+    "cross-env": "~1.0.7",
     "eslint": "~2.4.0",
     "eslint-plugin-babel": "~3.1.0",
     "isparta": "~4.0.0",
+    "kerberos": "0.0.19",
     "mocha": "~2.4.5",
+    "pow-mongodb-fixtures": "~0.13.0",
     "rimraf": "~2.5.2"
   },
   "dependencies": {

@@ -68,4 +68,67 @@ describe("AWSErrors", function () {
 			assert.strictEqual(error.message, errorMessage);
 		});
 	});
+
+	describe("QueueDoesNotExistError", function () {
+		it("is a subclass of Error", function () {
+			assert.ok(new AWSErrors.QueueDoesNotExistError() instanceof Error);
+		});
+
+		it("has a name property", function () {
+			const error = new AWSErrors.QueueDoesNotExistError();
+			assert.strictEqual(error.name, "QueueDoesNotExist");
+		});
+
+		it("has a code property", function () {
+			const error = new AWSErrors.QueueDoesNotExistError();
+			assert.strictEqual(error.code, "QueueDoesNotExist");
+		});
+
+		it("has a message property", function () {
+			const error = new AWSErrors.QueueDoesNotExistError();
+			assert.strictEqual(error.message, "The queue referred to does not exist");
+		});
+	});
+
+	describe("InvalidAttributeNameError", function () {
+		it("is a subclass of Error", function () {
+			assert.ok(new AWSErrors.InvalidAttributeNameError() instanceof Error);
+		});
+
+		it("has a name property", function () {
+			const error = new AWSErrors.InvalidAttributeNameError();
+			assert.strictEqual(error.name, "InvalidAttributeName");
+		});
+
+		it("has a code property", function () {
+			const error = new AWSErrors.InvalidAttributeNameError();
+			assert.strictEqual(error.code, "InvalidAttributeName");
+		});
+
+		it("has a message property", function () {
+			const error = new AWSErrors.InvalidAttributeNameError();
+			assert.strictEqual(error.message, "The attribute referred to does not exist");
+		});
+	});
+
+	describe("InvalidParameterTypeError", function () {
+		it("is a subclass of Error", function () {
+			assert.ok(new AWSErrors.InvalidParameterTypeError() instanceof Error);
+		});
+
+		it("has a name property", function () {
+			const error = new AWSErrors.InvalidParameterTypeError();
+			assert.strictEqual(error.name, "InvalidParameterType");
+		});
+
+		it("has a code property", function () {
+			const error = new AWSErrors.InvalidParameterTypeError();
+			assert.strictEqual(error.code, "InvalidParameterType");
+		});
+
+		it("has an message property", function () {
+			const error = new AWSErrors.InvalidParameterTypeError("Attributes['fake']", "string");
+			assert.strictEqual(error.message, "Expected params.Attributes['fake'] to be a string");
+		});
+	});
 });
