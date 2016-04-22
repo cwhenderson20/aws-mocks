@@ -41,10 +41,11 @@ test.cb("adds a message to the queue and returns info", (t) => {
 
 	sqs.receiveMessage((err, data) => {
 		t.falsy(err);
-		t.truthy(Array.isArray(data));
-		t.is(data.length, 1);
-		t.truthy(data[0].MessageId);
-		t.truthy(data[0].ReceiptHandle);
+		t.truthy(data);
+		t.truthy(data.Messages);
+		t.is(data.Messages.length, 1);
+		t.truthy(data.Messages[0].MessageId);
+		t.truthy(data.Messages[0].ReceiptHandle);
 		t.end();
 	});
 });
