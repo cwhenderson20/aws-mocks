@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "lint": "eslint 'lib/**/*.js' --ignore-path ./.gitignore",
+    "lint": "eslint 'lib/**/*.js' --ignore-path .gitignore",
     "pretest": "npm run lint -s",
     "test": "npm run test:functional -s && npm run test:unit -s",
     "test:watch": "parallelshell 'npm run test:functional -s -- --watch' 'npm run test:unit -s -- --watch'",
