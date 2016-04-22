@@ -16,7 +16,8 @@
     "cover": "nyc npm run test",
     "prebuild": "npm run clean -s && npm run test -s",
     "build": "babel lib --out-dir dist -s inline",
-    "prepublish": "npm run build -s"
+    "prepublish": "npm run build -s",
+    "postinstall": "npm run build -s"
   },
   "author": "Chris Henderson <cwhenderson20@gmail.com>",
   "license": "MIT",
