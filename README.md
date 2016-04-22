@@ -18,10 +18,10 @@ let AWS;
 
 // if the environment is a local one, require mocks
 if (!env || env === "development") {
-	AWS = require("aws-mocks");
+  AWS = require("aws-mocks");
 // otherwise, require the real SDK
 } else {
-	AWS = require("aws-sdk");
+  AWS = require("aws-sdk");
 }
 ```
 
@@ -35,9 +35,9 @@ const env = process.env.NODE_ENV;
 let sqs;
 
 if (!env || env === "development") {
-	sqs = new AWS.SQS();
+  sqs = new AWS.SQS();
 } else {
-	sqs = new MockAWS.SQS();
+  sqs = new MockAWS.SQS();
 }
 ```
 
@@ -45,9 +45,9 @@ if (!env || env === "development") {
 In order to emulate AWS service functionality, it is necessary to rely on external resources. Listed below are the dependencies for each service. If you do not plan on using various services, don't worry about installing the services' dependencies.
 
 - **SQS**
- - **mongodb**
- 	- Default connection string: `mongodb://localhost:27017`, configurable with environment variable `MOCK_SQS_DB`
- 	- Deafult collection name `mockSQS` (not configurable yet)
+	- **mongodb**
+ 		- Default connection string: `mongodb://localhost:27017`, configurable with environment variable `MOCK_SQS_DB`
+ 		- Default collection name `mockSQS` (not configurable yet)
 
 ## Limitations
 It should go without saying that mocking AWS services is a very difficult job to get right. AWS services have many intracacies and idosynracies that would be difficult to tease out without very extensive testing.

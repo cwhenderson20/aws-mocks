@@ -42,7 +42,7 @@
     "async": "~2.0.0-rc.3",
     "moment": "~2.13.0",
     "mongodb": "~2.1.16",
-    "mongodb-queue": "cwhenderson20/mongodb-queue"
+    "mongodb-queue": "cwhenderson20/mongodb-queue#v2.0.1"
   },
   "ava": {
     "files": [
