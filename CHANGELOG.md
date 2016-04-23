@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.10
+
+**Fixes:**
+- The library should now come transpiled; no postinstall steps needed
+
 ## v0.0.9
 
 **Additions:**
