@@ -4,3 +4,7 @@ node_js:
   - '4.4'
 services:
   - mongodb
+before_install:
+  - 'npm install -g npm@latest'
+after_success:
+  - '[ -z "$COVERALLS_REPO_TOKEN" ] && nyc npm test && nyc report --reporter=text-lcov | ./node_modues/.bin/coveralls'

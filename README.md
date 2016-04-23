@@ -1,6 +1,6 @@
 # aws-mocks
 
-[![Build Status](https://travis-ci.org/cwhenderson20/aws-mocks.svg?branch=master)](https://travis-ci.org/cwhenderson20/aws-mocks)
+[![Build Status](https://travis-ci.org/cwhenderson20/aws-mocks.svg?branch=master)](https://travis-ci.org/cwhenderson20/aws-mocks) [![Coverage Status](https://coveralls.io/repos/github/cwhenderson20/aws-mocks/badge.svg?branch=master)](https://coveralls.io/github/cwhenderson20/aws-mocks?branch=master)
 
 This module is intended to be a drop-in replacement for the node.js aws-sdk for use in local environments when it's not ideal to hit true AWS endpoints. This is not a mocking service for unit testing as it brings in outside dependencies such as mongodb and the file system (for a unit testing, look to [this module](https://github.com/antonosmond/mock-aws)); it could, however, be used for integration and functional testing.
 
