@@ -54,7 +54,7 @@ In order to emulate AWS service functionality, it is necessary to rely on extern
  		- Default collection name `mockSQS` (not configurable yet)
 
 ## Limitations
-It should go without saying that mocking AWS services is a very difficult job to get right. AWS services have many intracacies and idosynracies that would be difficult to tease out without very extensive testing.
+It should go without saying that mocking AWS services is a very difficult job to get right. AWS services have many intricacies and idiosyncracies that would be difficult to tease out without very extensive testing.
 
 Additionally, it would be impossible to make the mocks work exactly like their AWS counterparts even with a perfect knowledge of their functioning due to the distributed nature of the AWS infrastructure. Therefore, these mocks are meant to be basic replacements, not perfect drop-ins. 
 
@@ -78,4 +78,4 @@ Also, since this is so new (0.0.8 release!), expect the API to contain breaking 
 ## Contributing
 I'd love your help developing new feaures, so don't be shy to submit PRs! I don't have a huge amount of time to develop mocks for each service, so I'll do the ones I need first, which will likely be SQS, S3, Glacier, SNS, and maybe Lambda. 
 
-This module uses the awesome (but still new) [AVA](https://github.com/sindresorhus/ava) for testing and [ESLint](https://github.com/eslint/eslint) for linting. I'll be setting up TravisCI soon.
+This module uses the awesome (but still new) [AVA](https://github.com/sindresorhus/ava) for testing and [ESLint](https://github.com/eslint/eslint) for linting.
