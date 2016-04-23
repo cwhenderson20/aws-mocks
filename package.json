@@ -1,6 +1,6 @@
 {
   "name": "aws-mocks",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Mocks of key AWS services for testing and local development",
   "main": "dist/index.js",
   "repository": "cwhenderson20/aws-mocks",
