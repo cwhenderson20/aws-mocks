@@ -1,10 +1,11 @@
 language: node_js
 node_js:
-  - '4.3'
-  - '4.4'
+  - '5'
+  - '4'
+  - '0.12'
 services:
   - mongodb
 before_install:
   - 'npm install -g npm@latest'
 after_success:
-  - '[ -z "$COVERALLS_REPO_TOKEN" ] && nyc npm test && nyc report --reporter=text-lcov | ./node_modues/.bin/coveralls'
+  - '[ -z "$COVERALLS_REPO_TOKEN" ] && nyc npm test && nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls'
