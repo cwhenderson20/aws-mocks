@@ -49,3 +49,21 @@ test.cb("adds a message to the queue and returns info", (t) => {
 		t.end();
 	});
 });
+
+test.cb("calls setTimeout if WaitTimeSeconds is supplied", (t) => {
+	global.setTimeout = function () { t.pass("setTimeout was called"); t.end(); }
+	const sqs = new SQS({ params: {QueueUrl, WaitTimeSeconds: 1 } });
+	sqs.receiveMessage((err) => {
+		t.fail("setTimeout should have been called");
+		t.end();
+	});
+});
+
+test.cb("does not call setTimeout if WaitTimeSeconds is not supplied", (t) => {
+	global.setTimeout = () => {t.fail("setTimeout should not be called"); t.end(); }
+	const sqs = new SQS({ params: {QueueUrl} });
+	sqs.receiveMessage((err) => {
+		t.pass("setTimeout was not called");
+		t.end();
+	});
+});
