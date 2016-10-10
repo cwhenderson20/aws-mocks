@@ -1,5 +1,7 @@
-import test from "ava";
-import { AWSError } from "../../../lib/AWSErrors";
+"use strict";
+
+const test = require("ava");
+const { AWSError } = require("../../../lib/AWSErrors");
 
 test("is a subclass of Error", (t) => {
 	t.truthy(new AWSError() instanceof Error);

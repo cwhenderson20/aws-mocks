@@ -1,9 +1,11 @@
-import test from "ava";
-import { MongoClient } from "mongodb";
-import fixtures from "pow-mongodb-fixtures";
-import config from "../../../lib/config";
-import SQS from "../../../lib/SQS";
-import { MultipleValidationErrors } from "../../../lib/AWSErrors";
+"use strict";
+
+const test = require("ava");
+const { MongoClient } = require("mongodb");
+const fixtures = require("pow-mongodb-fixtures");
+const config = require("../../../lib/config");
+const SQS = require("../../../lib/SQS");
+const { MultipleValidationErrors } = require("../../../lib/AWSErrors");
 
 let db;
 let rawDb;
@@ -28,11 +30,11 @@ test.cb.beforeEach((t) => {
 			URL: QueueUrl,
 			Created: new Date().toISOString(),
 			DelaySeconds: 0,
-			MaxMessageSize: 0,
+			MaximumMessageSize: 0,
 			MessageRetentionPeriod: 0,
 			ReceiveMessageWaitTimeSeconds: 0,
-			VisibilityTimeout: 0
-		}]
+			VisibilityTimeout: 0,
+		}],
 	}, t.end);
 });
 
@@ -51,12 +53,12 @@ test.cb("sets queue attributes on an existing queue", (t) => {
 			QueueUrl,
 			Attributes: {
 				DelaySeconds: 1000,
-				MaxMessageSize: 1000,
+				MaximumMessageSize: 1000,
 				MessageRetentionPeriod: 1000,
 				ReceiveMessageWaitTimeSeconds: 1000,
-				VisibilityTimeout: 1000
-			}
-		}
+				VisibilityTimeout: 1000,
+			},
+		},
 	});
 
 	sqs.setQueueAttributes((err) => {
@@ -64,7 +66,7 @@ test.cb("sets queue attributes on an existing queue", (t) => {
 		rawDb.collection("queue_settings").findOne({ URL: QueueUrl }, (err, data) => {
 			t.falsy(err);
 			t.is(data.DelaySeconds, 1000);
-			t.is(data.MaxMessageSize, 1000);
+			t.is(data.MaximumMessageSize, 1000);
 			t.is(data.MessageRetentionPeriod, 1000);
 			t.is(data.ReceiveMessageWaitTimeSeconds, 1000);
 			t.is(data.VisibilityTimeout, 1000);
@@ -79,12 +81,12 @@ test.cb("does not act on non-existent queues", (t) => {
 			QueueUrl: "fakeURL",
 			Attributes: {
 				DelaySeconds: 1000,
-				MaxMessageSize: 1000,
+				MaximumMessageSize: 1000,
 				MessageRetentionPeriod: 1000,
 				ReceiveMessageWaitTimeSeconds: 1000,
-				VisibilityTimeout: 1000
-			}
-		}
+				VisibilityTimeout: 1000,
+			},
+		},
 	});
 
 	sqs.setQueueAttributes((err) => {

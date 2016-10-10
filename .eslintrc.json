@@ -1,0 +1,21 @@
+{
+	"extends": "airbnb",
+	"parserOptions": {
+		"sourceType": "script"
+	},
+	"rules": {
+		"arrow-parens": ["error", "always"],
+		"consistent-return": "off",
+		"import/no-extraneous-dependencies": "off",
+		"indent": ["error", "tab"],
+		"max-len": "off",
+		"no-param-reassign": "off",
+		"no-shadow": ["error", { "allow": ["err", "error"] }],
+		"no-tabs": "off",
+		"no-underscore-dangle": "off",
+		"no-use-before-define": ["error", { "functions": false }],
+		"quotes": ["error", "double", { "allowTemplateLiterals": true }],
+		"strict": ["error", "global"]
+	}
+
+}

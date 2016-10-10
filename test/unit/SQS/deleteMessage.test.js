@@ -1,15 +1,18 @@
-import test from "ava";
-import SQS from "../../../lib/SQS";
-import { MissingRequiredParameterError } from "../../../lib/AWSErrors";
+"use strict";
 
+const test = require("ava");
+const rewire = require("rewire");
+const { MissingRequiredParameterError } = require("../../../lib/AWSErrors");
+
+const SQS = rewire("../../../lib/SQS");
 const QueueUrl = "https://example.com/1234/test_queue";
 
 test.before(() => {
-	SQS.__Rewire__("connectToQueue", function (queueUrl, callback) {
+	SQS.__set__("connectToQueue", (queueUrl, callback) => { // eslint-disable-line no-underscore-dangle
 		const queue = {
 			ack(receiptHandle, cb) {
 				setImmediate(() => cb(null, {}));
-			}
+			},
 		};
 
 		setImmediate(() => callback(null, { queue, settings: {} }));

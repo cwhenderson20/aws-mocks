@@ -1,8 +1,11 @@
-import crypto from "crypto";
-import test from "ava";
-import SQS from "../../../lib/SQS";
-import { MissingRequiredParameterError } from "../../../lib/AWSErrors";
+"use strict";
 
+const crypto = require("crypto");
+const test = require("ava");
+const rewire = require("rewire");
+const { MissingRequiredParameterError } = require("../../../lib/AWSErrors");
+
+const SQS = rewire("../../../lib/SQS");
 const QueueUrl = "https://example.com/1234/test_queue";
 
 function id() {
@@ -14,11 +17,11 @@ function md5(body) {
 }
 
 test.before(() => {
-	SQS.__Rewire__("connectToQueue", function (queueUrl, callback) {
+	SQS.__set__("connectToQueue", (queueUrl, callback) => { // eslint-disable-line no-underscore-dangle
 		const queue = {
 			add(body, opts, cb) {
 				setImmediate(() => cb(null, id()));
-			}
+			},
 		};
 		setImmediate(() => callback(null, { queue }));
 	});

@@ -1,17 +1,20 @@
-import test from "ava";
-import SQS from "../../../lib/SQS";
-import { MissingRequiredParameterError, InvalidParameterValueError } from "../../../lib/AWSErrors";
+"use strict";
 
+const test = require("ava");
+const rewire = require("rewire");
+const { MissingRequiredParameterError, InvalidParameterValueError } = require("../../../lib/AWSErrors");
+
+const SQS = rewire("../../../lib/SQS");
 const QueueUrl = "https://example.com/1234/test_queue";
 
 test.before(() => {
-	SQS.__Rewire__("connectToQueue", function (queueUrl, callback) {
+	SQS.__set__("connectToQueue", (queueUrl, callback) => { // eslint-disable-line no-underscore-dangle
 		const queue = {
 			col: {
-				findOneAndUpdate: (query, update, cb) => {
+				findOneAndUpdate(query, update, cb) {
 					setImmediate(() => cb(null, {}));
-				}
-			}
+				},
+			},
 		};
 
 		setImmediate(() => callback(null, { queue, settings: {} }));
@@ -49,7 +52,7 @@ test.cb("requires a VisibilityTimeout", (t) => {
 });
 
 test.cb("does not allow extending message visibility past 12 hours", (t) => {
-	const sqs = new SQS({ params: { QueueUrl, ReceiptHandle: "fake", VisibilityTimeout: 43201 }});
+	const sqs = new SQS({ params: { QueueUrl, ReceiptHandle: "fake", VisibilityTimeout: 43201 } });
 
 	sqs.changeMessageVisibility((err) => {
 		t.truthy(err);

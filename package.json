@@ -6,7 +6,7 @@
   "repository": "cwhenderson20/aws-mocks",
   "scripts": {
     "clean": "rimraf dist",
-    "lint": "eslint 'lib/**/*.js'",
+    "lint": "eslint 'lib/**/*.js' 'test/**/*.js'",
     "pretest": "npm run lint -s",
     "test": "nyc npm run test:functional -s && npm run test:unit -s",
     "test:watch": "parallelshell 'npm run test:functional -s -- --watch' 'npm run test:unit -s -- --watch'",
@@ -34,26 +34,25 @@
   ],
   "devDependencies": {
     "ava": "~0.16.0",
-    "babel-cli": "~6.16.0",
-    "babel-core": "~6.17.0",
-    "babel-eslint": "~7.0.0",
-    "babel-plugin-rewire": "~1.0.0-rc-2",
-    "babel-preset-es2015": "~6.16.0",
-    "babel-preset-stage-2": "~6.17.0",
-    "babel-register": "^6.7.2",
     "coveralls": "^2.11.9",
     "cross-env": "~3.1.2",
     "eslint": "~3.7.1",
-    "eslint-plugin-babel": "~3.3.0",
+    "eslint-config-airbnb": "~12.0.0",
+    "eslint-plugin-import": "~2.0.0",
+    "eslint-plugin-jsx-a11y": "~2.2.3",
+    "eslint-plugin-react": "~6.3.0",
     "kerberos": "0.0.21",
+    "mockery": "~2.0.0",
     "nyc": "~8.3.1",
     "parallelshell": "~2.0.0",
     "pow-mongodb-fixtures": "~0.13.0",
-    "rewire": "~2.5.1",
-    "rimraf": "~2.5.2"
+    "rewire": "~2.5.2",
+    "rimraf": "~2.5.2",
+    "sinon": "~1.17.6"
   },
   "dependencies": {
     "async": "~2.0.0-rc.3",
+    "debug": "~2.2.0",
     "moment": "~2.15.1",
     "mongodb": "~2.2.10",
     "mongodb-queue": "cwhenderson20/mongodb-queue#v2.0.1"
@@ -66,7 +65,6 @@
       "lib/**/*.js"
     ],
     "require": [
-      "babel-register",
       "./lib"
     ]
   },

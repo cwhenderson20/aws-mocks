@@ -1,5 +1,7 @@
-import test from "ava";
-import SQS from "../../../lib/SQS";
+"use strict";
+
+const test = require("ava");
+const SQS = require("../../../lib/SQS");
 
 const QueueUrl = "https://example.com/1234/test_queue";
 

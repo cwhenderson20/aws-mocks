@@ -1,5 +1,7 @@
-import test from "ava";
-import { InvalidAttributeNameError } from "../../../lib/AWSErrors";
+"use strict";
+
+const test = require("ava");
+const { InvalidAttributeNameError } = require("../../../lib/AWSErrors");
 
 test("is a subclass of Error", (t) => {
 	t.truthy(new InvalidAttributeNameError() instanceof Error);

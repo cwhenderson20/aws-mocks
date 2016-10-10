@@ -1,8 +1,10 @@
-import test from "ava";
-import fixtures from "pow-mongodb-fixtures";
-import config from "../../../lib/config";
-import SQS from "../../../lib/SQS";
-import { MissingRequiredParameterError, QueueDoesNotExistError } from "../../../lib/AWSErrors";
+"use strict";
+
+const test = require("ava");
+const fixtures = require("pow-mongodb-fixtures");
+const config = require("../../../lib/config");
+const SQS = require("../../../lib/SQS");
+const { MissingRequiredParameterError, QueueDoesNotExistError } = require("../../../lib/AWSErrors");
 
 let db;
 const QueueUrl = "https://example.com/1234/test_queue";
@@ -22,8 +24,8 @@ test.cb.beforeEach((t) => {
 			MaxMessageSize: 0,
 			MessageRetentionPeriod: 0,
 			ReceiveMessageWaitTimeSeconds: 0,
-			VisibilityTimeout: 0
-		}]
+			VisibilityTimeout: 0,
+		}],
 	}, t.end);
 });
 

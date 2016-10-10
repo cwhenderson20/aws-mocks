@@ -1,5 +1,7 @@
-import test from "ava";
-import { MissingRequiredParameterError } from "../../../lib/AWSErrors";
+"use strict";
+
+const test = require("ava");
+const { MissingRequiredParameterError } = require("../../../lib/AWSErrors");
 
 test("is a subclass of Error", (t) => {
 	t.truthy(new MissingRequiredParameterError("param") instanceof Error);

@@ -1,5 +1,7 @@
-import test from "ava";
-import { InvalidParameterTypeError } from "../../../lib/AWSErrors";
+"use strict";
+
+const test = require("ava");
+const { InvalidParameterTypeError } = require("../../../lib/AWSErrors");
 
 test("is a subclass of Error", (t) => {
 	t.truthy(new InvalidParameterTypeError() instanceof Error);

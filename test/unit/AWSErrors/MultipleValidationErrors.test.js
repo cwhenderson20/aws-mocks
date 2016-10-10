@@ -1,5 +1,7 @@
-import test from "ava";
-import { MultipleValidationErrors } from "../../../lib/AWSErrors";
+"use strict";
+
+const test = require("ava");
+const { MultipleValidationErrors } = require("../../../lib/AWSErrors");
 
 const errorArray = [new Error("Message 1"), new Error("Message 2")];
 

@@ -1,9 +1,11 @@
-import crypto from "crypto";
-import test from "ava";
-import fixtures from "pow-mongodb-fixtures";
-import SQS from "../../../lib/SQS";
-import config from "../../../lib/config";
-import { MissingRequiredParameterError } from "../../../lib/AWSErrors";
+"use strict";
+
+const crypto = require("crypto");
+const test = require("ava");
+const fixtures = require("pow-mongodb-fixtures");
+const SQS = require("../../../lib/SQS");
+const config = require("../../../lib/config");
+const { MissingRequiredParameterError } = require("../../../lib/AWSErrors");
 
 let db;
 const QueueUrl = "https://example.com/1234/test_queue";

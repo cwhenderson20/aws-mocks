@@ -1,7 +1,9 @@
-import test from "ava";
-import fixtures from "pow-mongodb-fixtures";
-import config from "../../../lib/config";
-import SQS from "../../../lib/SQS";
+"use strict";
+
+const test = require("ava");
+const fixtures = require("pow-mongodb-fixtures");
+const config = require("../../../lib/config");
+const SQS = require("../../../lib/SQS");
 
 let db;
 const QueueUrl = "https://example.com/1234/test_queue";
