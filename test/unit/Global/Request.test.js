@@ -151,7 +151,7 @@ test.cb("promise method › returns a promise", (t) => {
 	requestFunctionStub.yields();
 	request = new Request(requestFunctionStub);
 
-	t.true(request.promise() instanceof Promise);
+	t.true(typeof request.promise().then === "function");
 	t.end();
 });
 
