@@ -14,9 +14,9 @@
     "test": "nyc npm run test:all -s",
     "test:all": "npm run test:functional -s && npm run test:unit -s",
     "test:watch": "parallelshell 'npm run test:functional -s -- --watch' 'npm run test:unit -s -- --watch'",
-    "test:functional": "cross-env NODE_ENV=test ava test/functional --serial --verbose",
+    "test:functional": "cross-env NODE_ENV=test ava test/functional --serial",
     "test:functional:watch": "npm run test:functional -s -- --watch",
-    "test:unit": "cross-env NODE_ENV=test ava test/unit --verbose",
+    "test:unit": "cross-env NODE_ENV=test ava test/unit",
     "test:unit:watch": "npm run test:unit -s -- --watch",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
