@@ -1,18 +1,19 @@
 "use strict";
 
 const test = require("ava");
-const { MongoClient } = require("mongodb");
+const MongoClient = require("mongodb").MongoClient;
 const fixtures = require("pow-mongodb-fixtures");
-const config = require("../../../lib/config");
+const mocksConfig = require("../../../lib/mocksConfig");
 const SQS = require("../../../lib/SQS");
-const { MultipleValidationErrors } = require("../../../lib/AWSErrors");
+const AWSErrors = require("../../../lib/AWSErrors");
 
-let db;
-let rawDb;
 const QueueUrl = "https://example.com/1234/test_queue";
+const MultipleValidationErrors = AWSErrors.MultipleValidationErrors;
+let rawDb;
+let db;
 
 test.cb.before((t) => {
-	db = fixtures.connect(config.db);
+	db = fixtures.connect(mocksConfig.db);
 	connect((err, database) => {
 		if (err) {
 			throw err;
@@ -100,5 +101,5 @@ test.cb("does not act on non-existent queues", (t) => {
 });
 
 function connect(cb) {
-	MongoClient.connect(config.db, cb);
+	MongoClient.connect(mocksConfig.db, cb);
 }

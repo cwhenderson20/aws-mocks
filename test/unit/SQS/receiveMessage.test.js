@@ -4,11 +4,12 @@ const crypto = require("crypto");
 const test = require("ava");
 const rewire = require("rewire");
 const sinon = require("sinon");
-const { ObjectId } = require("mongodb");
-const { MissingRequiredParameterError } = require("../../../lib/AWSErrors");
+const ObjectId = require("mongodb").ObjectId;
+const AWSErrors = require("../../../lib/AWSErrors");
 
 const SQS = rewire("../../../lib/SQS");
 const QueueUrl = "https://example.com/1234/test_queue";
+const MissingRequiredParameterError = AWSErrors.MissingRequiredParameterError;
 let clock;
 
 test.before(() => {

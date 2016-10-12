@@ -2,10 +2,12 @@
 
 const test = require("ava");
 const rewire = require("rewire");
-const { MissingRequiredParameterError, InvalidParameterValueError } = require("../../../lib/AWSErrors");
+const AWSErrors = require("../../../lib/AWSErrors");
 
 const SQS = rewire("../../../lib/SQS");
 const QueueUrl = "https://example.com/1234/test_queue";
+const MissingRequiredParameterError = AWSErrors.MissingRequiredParameterError;
+const InvalidParameterValueError = AWSErrors.InvalidParameterValueError;
 
 test.before(() => {
 	SQS.__set__("connectToQueue", (queueUrl, callback) => { // eslint-disable-line no-underscore-dangle

@@ -1,6 +1,9 @@
 {
   "name": "aws-mocks",
   "version": "0.0.10",
+  "engines": {
+  	"node": ">=4"
+  },
   "description": "Mocks of key AWS services for testing and local development",
   "main": "dist/index.js",
   "repository": "cwhenderson20/aws-mocks",
@@ -8,17 +11,14 @@
     "clean": "rimraf dist",
     "lint": "eslint 'lib/**/*.js' 'test/**/*.js'",
     "pretest": "npm run lint -s",
-    "test": "nyc npm run test:functional -s && npm run test:unit -s",
+    "test": "npm run test:functional -s && npm run test:unit -s",
     "test:watch": "parallelshell 'npm run test:functional -s -- --watch' 'npm run test:unit -s -- --watch'",
-    "test:functional": "cross-env NODE_ENV=test ava test/functional --serial",
+    "test:functional": "cross-env NODE_ENV=test ava test/functional --serial --verbose",
     "test:functional:watch": "npm run test:functional -s -- --watch",
-    "test:unit": "cross-env NODE_ENV=test ava test/unit",
+    "test:unit": "cross-env NODE_ENV=test ava test/unit --verbose",
     "test:unit:watch": "npm run test:unit -s -- --watch",
-    "coveralls": "nyc report --repoter=text-lcov | coveralls",
-    "prebuild": "npm run clean -s && npm run test -s",
-    "build": "babel lib --out-dir dist -s inline",
-    "build-only": "npm run clean -s && babel lib --out-dir dist -s inline",
-    "prepublish": "npm run build-only -s"
+    "coverage": "nyc npm run test -s",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Chris Henderson <cwhenderson20@gmail.com>",
   "license": "MIT",
@@ -40,6 +40,7 @@
     "eslint-config-airbnb": "~12.0.0",
     "eslint-plugin-import": "~2.0.0",
     "eslint-plugin-jsx-a11y": "~2.2.3",
+    "eslint-plugin-node": "~2.1.2",
     "eslint-plugin-react": "~6.3.0",
     "kerberos": "0.0.21",
     "mockery": "~2.0.0",
@@ -77,7 +78,7 @@
     "exclude": [
       "test",
       "**/*.test.js",
-      "**/config.js",
+      "lib/mocksConfig.js",
       "node_modules"
     ]
   }

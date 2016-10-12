@@ -4,14 +4,15 @@ const crypto = require("crypto");
 const test = require("ava");
 const fixtures = require("pow-mongodb-fixtures");
 const SQS = require("../../../lib/SQS");
-const config = require("../../../lib/config");
-const { MissingRequiredParameterError } = require("../../../lib/AWSErrors");
+const mocksConfig = require("../../../lib/mocksConfig");
+const AWSErrors = require("../../../lib/AWSErrors");
 
-let db;
+const MissingRequiredParameterError = AWSErrors.MissingRequiredParameterError;
 const QueueUrl = "https://example.com/1234/test_queue";
+let db;
 
 test.before(() => {
-	db = fixtures.connect(config.db);
+	db = fixtures.connect(mocksConfig.db);
 	db.clear();
 });
 

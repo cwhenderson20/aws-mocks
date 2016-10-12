@@ -3,10 +3,11 @@
 const crypto = require("crypto");
 const test = require("ava");
 const rewire = require("rewire");
-const { MissingRequiredParameterError } = require("../../../lib/AWSErrors");
+const AWSErrors = require("../../../lib/AWSErrors");
 
 const SQS = rewire("../../../lib/SQS");
 const QueueUrl = "https://example.com/1234/test_queue";
+const MissingRequiredParameterError = AWSErrors.MissingRequiredParameterError;
 
 function id() {
 	return crypto.randomBytes(6).toString("hex");

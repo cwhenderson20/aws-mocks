@@ -2,15 +2,15 @@
 
 const test = require("ava");
 const fixtures = require("pow-mongodb-fixtures");
-const config = require("../../../lib/config");
+const mocksConfig = require("../../../lib/mocksConfig");
 const SQS = require("../../../lib/SQS");
 
-let db;
 const QueueUrl = "https://example.com/1234/test_queue";
 const QueueUrl2 = "https://example.com/1234/fake_queue";
+let db;
 
 test.cb.before((t) => {
-	db = fixtures.connect(config.db);
+	db = fixtures.connect(mocksConfig.db);
 	db.clearAndLoad({
 		queue_settings: [{
 			Name: QueueUrl.split("/").slice(-1).pop(),

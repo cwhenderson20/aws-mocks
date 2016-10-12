@@ -1,7 +1,7 @@
 "use strict";
 
 const test = require("ava");
-const { AWSError } = require("../../../lib/AWSErrors");
+const AWSError = require("../../../lib/AWSErrors").AWSError;
 
 test("is a subclass of Error", (t) => {
 	t.truthy(new AWSError() instanceof Error);

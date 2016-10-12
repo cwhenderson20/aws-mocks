@@ -2,15 +2,17 @@
 
 const test = require("ava");
 const fixtures = require("pow-mongodb-fixtures");
-const config = require("../../../lib/config");
+const mocksConfig = require("../../../lib/mocksConfig");
 const SQS = require("../../../lib/SQS");
-const { MissingRequiredParameterError, QueueDoesNotExistError } = require("../../../lib/AWSErrors");
+const AWSErrors = require("../../../lib/AWSErrors");
 
-let db;
+const MissingRequiredParameterError = AWSErrors.MissingRequiredParameterError;
+const QueueDoesNotExistError = AWSErrors.QueueDoesNotExistError;
 const QueueUrl = "https://example.com/1234/test_queue";
+let db;
 
 test.cb.before((t) => {
-	db = fixtures.connect(config.db);
+	db = fixtures.connect(mocksConfig.db);
 	db.clear(t.end);
 });
 

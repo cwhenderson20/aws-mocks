@@ -1,7 +1,7 @@
 "use strict";
 
 const test = require("ava");
-const { InvalidAttributeNameError } = require("../../../lib/AWSErrors");
+const InvalidAttributeNameError = require("../../../lib/AWSErrors").InvalidAttributeNameError;
 
 test("is a subclass of Error", (t) => {
 	t.truthy(new InvalidAttributeNameError() instanceof Error);

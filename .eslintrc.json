@@ -1,4 +1,5 @@
 {
+	"plugins": ["node"],
 	"extends": "airbnb",
 	"parserOptions": {
 		"sourceType": "script"
@@ -9,6 +10,9 @@
 		"import/no-extraneous-dependencies": "off",
 		"indent": ["error", "tab"],
 		"max-len": "off",
+		"node/no-deprecated-api": ["error"],
+		"node/no-unsupported-features": ["error"],
+		"node/no-missing-require": ["error"],
 		"no-param-reassign": "off",
 		"no-shadow": ["error", { "allow": ["err", "error"] }],
 		"no-tabs": "off",

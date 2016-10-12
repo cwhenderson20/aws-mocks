@@ -1,7 +1,7 @@
 "use strict";
 
 const test = require("ava");
-const { InvalidParameterTypeError } = require("../../../lib/AWSErrors");
+const InvalidParameterTypeError = require("../../../lib/AWSErrors").InvalidParameterTypeError;
 
 test("is a subclass of Error", (t) => {
 	t.truthy(new InvalidParameterTypeError() instanceof Error);
@@ -17,7 +17,7 @@ test("has a code property", (t) => {
 	t.is(error.code, "InvalidParameterType");
 });
 
-test("has an message property", (t) => {
+test("has a message property", (t) => {
 	const error = new InvalidParameterTypeError("Attributes['fake']", "string");
 	t.is(error.message, "Expected params.Attributes['fake'] to be a string");
 });
