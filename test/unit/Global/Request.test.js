@@ -3,6 +3,7 @@
 const test = require("ava");
 const sinon = require("sinon");
 const Request = require("../../../lib/Request");
+const Response = require("../../../lib/Response");
 const EventEmitter = require("events").EventEmitter;
 
 let request;
@@ -83,8 +84,9 @@ test.cb("send method › emits an error event if the request calls back with an 
 	request = new Request(requestFunctionStub);
 
 	request.on("success", () => t.fail());
-	request.on("error", (err) => {
+	request.on("error", (err, response) => {
 		t.truthy(err);
+		t.true(response instanceof Response);
 		t.is(err.message, "Error message");
 		t.end();
 	});
@@ -100,7 +102,8 @@ test.cb("send method › emits a success event if the request calls back without
 		t.fail();
 		t.end();
 	});
-	request.on("success", () => {
+	request.on("success", (response) => {
+		t.true(response instanceof Response);
 		t.true(requestFunctionStub.calledOnce);
 		t.end();
 	});
@@ -117,7 +120,8 @@ test.cb("send method › emits a complete event if the request calls back with a
 		t.end();
 	});
 	request.on("error", () => {});
-	request.on("complete", () => {
+	request.on("complete", (response) => {
+		t.true(response instanceof Response);
 		t.true(requestFunctionStub.calledOnce);
 		t.end();
 	});
@@ -134,8 +138,9 @@ test.cb("send method › emits a complete event if the request calls back withou
 		t.fail();
 		t.end();
 	});
-	request.on("complete", () => {
+	request.on("complete", (response) => {
 		t.true(requestFunctionStub.calledOnce);
+		t.true(response instanceof Response);
 		t.end();
 	});
 	request.send();
