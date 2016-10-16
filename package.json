@@ -2,7 +2,7 @@
   "name": "aws-mocks",
   "version": "0.0.10",
   "engines": {
-  	"node": ">=4"
+    "node": ">=4"
   },
   "description": "Mocks of key AWS services for testing and local development",
   "main": "dist/index.js",
@@ -56,7 +56,7 @@
     "debug": "2.2.0",
     "moment": "2.15.1",
     "mongodb": "2.2.10",
-    "@chrishenderson/mongodb-queue": "2.0.2"
+    "@chrishenderson/mongodb-queue": "2.0.3"
   },
   "ava": {
     "files": [
