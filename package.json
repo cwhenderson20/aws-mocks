@@ -5,7 +5,7 @@
     "node": ">=4"
   },
   "description": "Mocks of key AWS services for testing and local development",
-  "main": "dist/index.js",
+  "main": "index.js",
   "repository": "cwhenderson20/aws-mocks",
   "scripts": {
     "clean": "rimraf dist",
@@ -28,9 +28,6 @@
     "mock",
     "sqs",
     "s3"
-  ],
-  "files": [
-    "dist"
   ],
   "devDependencies": {
     "ava": "0.16.0",
@@ -64,9 +61,6 @@
     ],
     "source": [
       "lib/**/*.js"
-    ],
-    "require": [
-      "./lib"
     ]
   },
   "nyc": {
