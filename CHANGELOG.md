@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.0.11
+
+**Improvements**
+- Moves to new linting config
+- Removes transpilation
+- Adds more tests
+- Implements a basic cache on SQS connections to mongodb (thanks [@britebit](https://github.com/britebit)!)
+
 ## v0.0.10
 
 **Fixes:**
