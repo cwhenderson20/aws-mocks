@@ -1,8 +1,13 @@
 # Changelog
 
+## v0.0.12
+
+**Fixes:**
+- Removes old configuration for transpilation from package.json
+
 ## v0.0.11
 
-**Improvements**
+**Improvements:**
 - Moves to new linting config
 - Removes transpilation
 - Adds more tests
