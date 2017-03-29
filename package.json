@@ -1,6 +1,6 @@
 {
   "name": "aws-mocks",
-  "version": "0.0.12",
+  "version": "0.0.13-beta.1",
   "engines": {
     "node": ">=4"
   },
