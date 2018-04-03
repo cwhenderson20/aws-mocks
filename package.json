@@ -1,6 +1,6 @@
 {
   "name": "aws-mocks",
-  "version": "0.0.13-beta.1",
+  "version": "0.0.14",
   "engines": {
     "node": ">=4"
   },
@@ -49,11 +49,11 @@
     "sinon": "1.17.6"
   },
   "dependencies": {
+    "@chrishenderson/mongodb-queue": "2.0.3",
     "async": "2.1.1",
     "debug": "2.2.0",
     "moment": "2.15.1",
-    "mongodb": "2.2.10",
-    "@chrishenderson/mongodb-queue": "2.0.3"
+    "mongodb": "2.2.10"
   },
   "ava": {
     "files": [
